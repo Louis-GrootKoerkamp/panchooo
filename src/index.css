@@ -1,0 +1,73 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Pirata+One&family=Cinzel:wght@400;700&family=Permanent+Marker&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
+@theme {
+  --color-blood-red: #BC1111;
+  --color-deep-black: #0A0A0A;
+  --font-gothic: "Cinzel", serif;
+  --font-serif-display: "Cinzel", serif;
+  --font-graffiti: "Permanent Marker", cursive;
+  --font-floaty: "Cinzel", serif;
+  --font-sans: "Cinzel", serif;
+}
+
+@layer base {
+  body {
+    @apply bg-deep-black text-zinc-100 font-sans antialiased selection:bg-blood-red selection:text-white;
+    cursor: none !important;
+    font-size: 1.1rem;
+  }
+
+  /* Ensure cursor is hidden on all elements and interactive states */
+  * {
+    cursor: none !important;
+  }
+}
+
+@layer utilities {
+  .text-silver-gradient {
+    background: linear-gradient(135deg, #E0E0E0 0%, #888888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+
+  .glass-morphism {
+    background: rgba(20, 20, 20, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .btn-hover-expand {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-hover-expand::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: -1;
+  }
+
+  .btn-hover-expand:hover::before {
+    width: 300%;
+    height: 300%;
+  }
+}
